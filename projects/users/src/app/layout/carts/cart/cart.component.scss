@@ -1,0 +1,26 @@
+
+.font-bold{
+    font-weight: bold !important;
+}
+.btn{
+    text-align: center !important;
+    color: white !important;
+    background: #4b555f !important;
+    width: 2.5rem !important;
+    padding: 2px !important;
+    height: fit-content;
+}
+.btndeleted{
+    text-align: center !important;
+    color: white !important;
+    background: red !important;
+    width: 5rem !important;
+    padding: 2px !important;
+    height: fit-content;
+}
+::ng-deep{
+
+    .mat-mdc-card-header-text{
+        width: 100% !important;
+    }
+}

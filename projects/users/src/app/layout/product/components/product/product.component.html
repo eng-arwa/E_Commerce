@@ -1,0 +1,20 @@
+<div class="example-card flex justify-end h-full flex-col " >
+<mat-card-header>
+    <mat-card-title-group>
+      <mat-card-title>{{dataProducts.title}}</mat-card-title>
+      <mat-card-subtitle>{{dataProducts?.category}}</mat-card-subtitle>
+      <img mat-card-md-image [src]="dataProducts.image" class="rounded-md"  alt="Image of a Shiba Inu">
+    </mat-card-title-group>
+  </mat-card-header>
+  <mat-card-content  routerLink="details/{{dataProducts.id}}">
+    {{dataProducts.description}}
+  </mat-card-content>
+  <mat-card-actions class="flex justify-end item h-full">
+<div *ngIf="addButton" class="w-full flex justify-between  items-center">
+    <input  type="number" matInput class="p-px" placeholder="count of place" [(ngModel)]="mount">
+    <button mat-raised-button class="bg-off-yellow" (click)="add(dataProducts)" [disabled]="mount == null"> Add </button>
+</div>
+    <button  *ngIf="!addButton" mat-raised-button class="bg-off-yellow" (click)="addButton = true"> Add to Cart</button>
+      <span class="bg-off-purple text-white rounded-md py-2 px-3 mx-4">{{dataProducts.price | currency}}</span>
+    </mat-card-actions>
+</div>

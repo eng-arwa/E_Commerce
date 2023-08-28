@@ -1,0 +1,74 @@
+<mat-card class="example-card">
+    <mat-card-header class="my-4 w-full">
+      <mat-card-subtitle>
+        <h1 class="text-dark-purple font-bold text-lg">Shopping Carts</h1>
+      </mat-card-subtitle>
+      <mat-card-title class="w-full">
+        <div class="flex justify-between w-full">
+
+            <p>you have {{dataSource.length}} Products in your Cart</p>
+            <button mat-button class="btn mx-4" (click)="oreder()">Order Now</button>
+        </div>
+
+    </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+
+        <table mat-table [dataSource]="dataSource" class="my-8 mat-elevation-z8">
+
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+            <!-- Position Column -->
+            <ng-container matColumnDef="Name">
+              <th mat-header-cell *matHeaderCellDef> Product </th>
+              <td mat-cell *matCellDef="let element"> {{element.item.title}} </td>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="Price">
+              <th mat-header-cell *matHeaderCellDef> Price </th>
+              <td mat-cell *matCellDef="let element"> {{element.item.price}} </td>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="Quantity">
+              <th mat-header-cell *matHeaderCellDef> Quantity </th>
+              <td mat-cell *matCellDef="let element ; let index = index">
+                <button mat-button class="btn" (click)="plusQuantity(index)">+</button>
+                
+                 <input type="number" (change)="quantity(index)" class="mx-2 border-none bg-off-purple rounded-md text-white text-center focus:border-none focus:outline-none w-20" [(ngModel)]="element.quantity">
+                <button mat-button class="btn" (click)="minQuantity(index)">-</button>
+                 </td>
+            </ng-container>
+          
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="Total">
+              <th mat-header-cell *matHeaderCellDef> Total </th>
+              <td mat-cell *matCellDef="let element"> {{element.quantity * element.item.price}} </td>
+            </ng-container>
+            <ng-container matColumnDef=" ">
+              <th mat-header-cell *matHeaderCellDef> Action </th>
+              <td mat-cell *matCellDef="let element;let index=index"> 
+                <button mat-button class="btndeleted" (click)="deleteprocart(index)">Deleted</button>
+
+              </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          
+          
+
+        <mat-divider></mat-divider>
+    </mat-card-content>
+    <mat-card-actions class="flex justify-between">
+        <p><span class="bg-yellow font-bold p-2 rounded-md text-white mx-2">Total </span> {{ Total}}</p>
+        <button mat-button class="btn mx-4" (click)="Clear()">Clear</button>
+
+    </mat-card-actions>
+    <mat-card-footer>
+      <mat-progress-bar [mode]="mode" value="0"></mat-progress-bar>
+    </mat-card-footer>
+  </mat-card>

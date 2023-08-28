@@ -1,0 +1,17 @@
+<form class="mb-4 flex justify-center gap-4 w-full">
+    <mat-form-field class="w-6/12 " appearance="outline">
+      <mat-label>Search</mat-label>
+      <input matInput placeholder="Placeholder" class="w-full" >
+    </mat-form-field>
+    <!-- category -->
+    <mat-form-field  class="w-2/5" appearance="outline">
+      <mat-label>{{title}}</mat-label>
+      <mat-select (selectionChange)="change($event)" >
+        <mat-option value="all">all</mat-option>
+        <mat-option *ngFor="let item of data" value="{{item}}">{{item}}</mat-option>
+        
+      </mat-select>
+  
+    </mat-form-field>
+    <!-- category -->
+  </form>

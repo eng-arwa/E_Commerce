@@ -1,0 +1,16 @@
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title-group>
+            <mat-card-title class="text-yellow font-bold">{{dataProduct?.title}}</mat-card-title>
+            <mat-card-subtitle class="text-dark-purple">{{dataProduct?.category}}</mat-card-subtitle>
+            <img mat-card-xl-image [src]="dataProduct?.image">
+        </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>
+        <p><span class="text-dark-purple font-bold">Rate</span> {{dataProduct?.rating.rate}}</p>
+        <p><span class="text-dark-purple font-bold">Count</span> {{dataProduct?.rating.count}}</p>
+        <p><span class="text-dark-purple font-bold">Description</span><br> {{dataProduct?.description}}</p>
+        <br>
+        <p><span class="text-dark-purple font-bold">Price </span> {{dataProduct?.price | currency}}</p>
+    </mat-card-content>
+</mat-card>
